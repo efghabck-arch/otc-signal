@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>OTC 5 Minute Signal</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <style>
+    body {
+      background:#0f172a;
+      color:white;
+      font-family:Arial;
+      text-align:center;
+      padding-top:50px;
+    }
+    .signal {
+      font-size:42px;
+      margin-top:30px;
+      font-weight:bold;
+    }
+  </style>
+</head>
+<body>
+
+<h1>QxBroker OTC Signal</h1>
+<p>Timeframe: 5 Minutes</p>
+
+<div class="signal" id="signal">Loading...</div>
+
+<script>
+function generateSignal(){
+  let rsi = Math.random()*100;
+  let signal = "NO TRADE ⛔";
+
+  if(rsi > 50 && rsi < 62){
+    signal = "🟢 CALL (BUY)";
+  }
+  else if(rsi > 38 && rsi < 50){
+    signal = "🔴 PUT (SELL)";
+  }
+
+  document.getElementById("signal").innerText = signal;
+}
+
+generateSignal();
+setInterval(generateSignal, 300000); // 5 minutes
+</script>
+
+</body>
+</html>
